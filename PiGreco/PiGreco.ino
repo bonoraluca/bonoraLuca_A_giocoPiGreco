@@ -20,9 +20,11 @@ void setup() {
 }
 
 void loop() {
+  while(vite>0){
   if(digitalRead(bottoneI == HIGH)
   {
     iniziaGioco();
+  }
   }
 
 }
