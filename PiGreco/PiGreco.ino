@@ -1,16 +1,18 @@
 #include <LiquidCrystal.h>
 
-int bottoneI
-int bottone1
-int bottone2
-int bottone3
-int bottone4
-int bottone5
+int bottoneI = 6;
+int bottone1 = 1;
+int bottone2 = 2;
+int bottone3 = 3;
+int bottone4 = 4;
+int bottone5 = 5;
 int tempo = 1000;
 int vite = 3;
-LiquidCrystal lcd();
+int punti = 0;
+LiquidCrystal lcd(13,12,11,10,9,8);
 
 void setup() {
+  lcd.begin(16,2);
   pinMode(bottoneI,INPUT);
   pinMode(bottone1,INPUT);
   pinMode(bottone2,INPUT);
@@ -20,30 +22,34 @@ void setup() {
 }
 
 void loop() {
-  while(vite>0){
-  if(digitalRead(bottoneI == HIGH)
+  if(digitalRead(bottoneI == HIGH))
   {
+    
     iniziaGioco();
+    
   }
-  }
+  
 
 }
 
 void iniziaGioco()
 {
+  lcd.setCursor(1,0);
+  lcd.print("vite: "+ vite);
+  while (vite>0){
   int pos = random(1,5);
-  String bottone = "bottone"+"pos"
   lcd.setCursor(0,pos);
   lcd.print("л");
-  for(int i=0,i<tempo,i++)
+  for(int i=0;i<tempo;i++)
   {
-    if(digitalRead(bottone) == HIGH)
+    if(digitalRead(pos) == HIGH)
     {
-      vite++;
+      punti++;
       iniziaGioco();
     }
   }
   vite--;
   iniziaGioco();
+  }
   
 }
